@@ -1,159 +1,200 @@
 git config
 ==========
 
-git config -e [--global]
-    edit the .git/config [or ~/.gitconfig] file in your \$EDITOR.
+`git config -e [--global]`
 
-git config --global user.name 'Name SecondName'
-    sets your name.
+Edit the .git/config [or ~/.gitconfig] file in your \$EDITOR.
 
-git config --global user.email 'email@email.com'
-    sets your email.
+`git config --global user.name 'Name SecondName'`
 
-git config core.autocrlf true
-    this setting tells git to convert the newlines to the system's standard
-    when checking out files, and to LF newlines when committing in.
+Sets your name.
 
-git config --list
-    prints list of all config options.
+`git config --global user.email 'email@email.com'`
 
-git config apply.whitespace nowarn
-    to ignore whitespace.
+Sets your email.
+
+`git config core.autocrlf true`
+
+this setting tells git to convert the newlines to the system's standard
+when checking out files, and to LF newlines when committing in.
+
+`git config --list`
+
+Prints list of all config options.
+
+`git config apply.whitespace nowarn`
+
+To ignore whitespace.
 
 
 git remotes
 ===========
 
-git remote add <remote> <remote_URL>
-    adds a remote repository to your git config.
+`git remote add <remote> <remote_URL>`
 
-git push <repository> +<remote>:<new_remote>
-    replace a <remote> branch with <new_remote>.
+Adds a remote repository to your git config.
 
-git remote add -t master -m master origin git://example.com/git.git/
-    add a remote and track its master.
+`git push <repository> +<remote>:<new_remote>`
 
-git remote show <remote>
-    show information about remote server.
+Replace a <remote> branch with <new_remote>.
 
-git checkout -b <local branch> <remote>/<remote branch>
-    track a remote branch as a local branch.
+`git remote add -t master -m master origin git://example.com/git.git/`
+
+Add a remote and track its master.
+
+`git remote show <remote>`
+
+Show information about the remote server.
+
+`git checkout -b <local branch> <remote>/<remote branch>`
+
+Track a remote branch as a local branch.
 
 
 git repository getting and creation
 ===================================
 
-git init
-    create new repository in the current dir.
+`git init`
 
-git clone ssh://user@domain.com/repo.git
-    clone an existing repository to the repo dir.
+Create a new repository in the current dir.
 
-git clone ssh://user@domain.com/repo.git <my-repo>
-    clone an existing repository to the <my-repo> dir.
+`git clone ssh://user@domain.com/repo.git`
 
-git clone ssh://user@domain.com/repo.git --branch <my-branch>
-    clone an existing repository to the repo dir with checkouting <my-branch>
+Clone an existing repository to the repo dir.
+
+`git clone ssh://user@domain.com/repo.git <my-repo>`
+
+Clone an existing repository to the <my-repo> dir.
+
+`git clone ssh://user@domain.com/repo.git --branch <my-branch>`
+    
+Clone an existing repository to the repo dir with checkout <my-branch>
     instead of the remote's HEAD.
 
-git clone ssh://user@domain.com/repo.git --depth 1
-    clone an existing repository to the repo dir without history only with last
+`git clone ssh://user@domain.com/repo.git --depth 1`
+
+Clone an existing repository to the repo dir without history, only with the last
     commit.
 
 
 adding files to the git
 =======================
 
-git add <file1> <file2> ...
-    add <file1>, <file2>, etc... to the project.
+`git add <file1> <file2> ...`
 
-git add <dir>
-    add <dir> to the project.
+Add <file1>, <file2>, etc... to the project.
 
-git add .
-    add all files besides included in .gitignore.
+`git add <dir>`
 
-git add -i
-    add modified contents in the working tree interactively to the index.
+Add <dir> to the project.
 
-git add -A
-    add, modify and remove index entries to match the current working tree.
+`git add .`
 
-git add -u
-    modify or remove index entries to match the current working tree. It adds no new files.
+Add all files besides those included in .gitignore.
+
+`git add -i`
+
+Add modified contents in the working tree interactively to the index.
+
+`git add -A`
+    
+Add, modify, and remove index entries to match the current working tree.
+
+`git add -u`
+
+Modify or remove index entries to match the current working tree. It adds no new files.
 
 
 deleting files from the git repository
 ======================================
 
-git rm <file1> <file2> ...
-    remove <file1>, <file2>, etc... from the project.
+`git rm <file1> <file2> ...`
 
-git rm '\$(git ls-files --deleted)'
-    remove all deleted files from the project.
+Remove <file1>, <file2>, etc... from the project.
 
-git rm --cached <file1> <file2> ...
-    only remove from the index.
+`git rm '\$(git ls-files --deleted)'`
 
-git rm -r <dir>
-    remove <dir> from the project.
+Remove all deleted files from the project.
+
+`git rm --cached <file1> <file2> ...`
+
+Only remove it from the index.
+
+`git rm -r <dir>`
+
+Remove <dir> from the project.
 
 
-git commiting
+git commit
 =============
 
-git commit <file1> <file2> ... [-m <msg>]
-    commit <file1>, <file2>, etc..., optionally using commit message <msg>.
+`git commit <file1> <file2> ... [-m <msg>]`
+
+Commit <file1>, <file2>, etc..., optionally using commit message <msg>.
     otherwise opening your editor to let you type a commit message.
 
-git commit -a
-    commit all files changed since your last commit.
+`git commit -a`
 
-git commit -v
-    commit verbosely, i.e. includes the diff of the contents being committed in
+Commit all files that have changed since your last commit.
+
+`git commit -v`
+
+Commit verbosely, i.e., includes the diff of the contents being committed in
     the commit message screen.
 
 
 git branching
 =============
 
-git branch
-    list all local branches.
+`git branch`
 
-git branch -r
-    list all remote branches.
+List all local branches.
 
-git branch -a
-    list all local and remote branches.
+`git branch -r`
 
-git branch <branch>
-    create a new branch named <branch>, referencing the same point in history
+List all remote branches.
+
+`git branch -a`
+    
+List all local and remote branches.
+
+`git branch <branch>`
+
+Create a new branch named <branch>, referencing the same point in history
     as the current branch.
 
-git branch --track <branch> <remote-branch>
-    create a tracking branch. Will push/pull changes to/from another
+`git branch --track <branch> <remote-branch>`
+
+Create a tracking branch. Will push/pull changes to/from another
     repository.
 
-git branch --set-upstream <branch> <remote-branch>
-    make an existing branch track a remote branch.
+`git branch --set-upstream <branch> <remote-branch>`
 
-git branch -d <branch>
-    remove local branch.
+Make an existing branch track a remote branch.
 
-git branch -r -d <remote-branch>
-    delete a remote tracking branch.
+`git branch -d <branch>`
 
-git checkout <branch>
-    make the current branch - <branch>.
+Remove the local branch.
 
-git checkout -b <new> <start-point>
-    create a new branch <new> referencing <start-point>, and check it out.
+`git branch -r -d <remote-branch>`
 
-git push :<branch>
-    remove remote <branch> from current repo.
+Delete a remote tracking branch.
 
-git branch -r -d <remote-branch>
-    delete a remote tracking branch.
+`git checkout <branch>`
+
+Make the current branch - <branch>.
+
+`git checkout -b <new> <start-point>`
+
+Create a new branch <new> referencing <start-point>, and check it out.
+
+`git push :<branch>`
+
+Remove remote <branch> from the current repo.
+
+`git branch -r -d <remote-branch>`
+
+Delete a remote tracking branch.
 
 git merging
 ===========
